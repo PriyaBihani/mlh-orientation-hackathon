@@ -35,6 +35,7 @@ export default function App() {
   //   console.log(flatCityMap(cityMapping));
 
   const options = [
+    { value: "Los Angeles", label: "Los Angeles" },
     { value: "NYC", label: "NYC" },
     { value: "London", label: "London" },
     { value: "Moscow", label: "Moscow" },
