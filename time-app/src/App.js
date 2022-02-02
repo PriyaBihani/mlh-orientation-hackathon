@@ -7,19 +7,19 @@ export default function App() {
   //   let myCity = "delhi";
   //   // let myCity = value grabbed from the dropdown menu
   //   // let myCityLookup = cityTimezones.lookupViaCity(myCity)
-  //   let myColleguesCity = "moscow";
+  //   let myColleaguesCity = "moscow";
 
   const api_key = "FAJIO7OXE21N";
   const [offset, setOffset] = useState(1);
   const [myStartTime, setMyStartTime] = useState("");
   const [myEndTime, setMyEndTime] = useState("");
-  const [colleguesStartTime, setColleguesStartTime] = useState("");
-  const [ColleguesEndTime, setColleguesEndTime] = useState("");
+  const [colleaguesStartTime, setColleaguesStartTime] = useState("");
+  const [ColleaguesEndTime, setColleaguesEndTime] = useState("");
   const [result, setResult] = useState(null);
 
   // set state for dropdown
   const [myCity, setSelectedValueCity1] = useState("");
-  const [myColleguesCity, setSelectedValueCity2] = useState("");
+  const [myColleaguesCity, setSelectedValueCity2] = useState("");
 
   const options = [
     { value: "Taulaga", label: "UTC-11" },
@@ -86,17 +86,18 @@ export default function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(options2);
-    // Adding offset to the collegues time, as it will convert collegues time to local time
-    let localCollegueStartTime =
-      Number(colleguesStartTime.split(":")[0]) + offset;
-    let localCollegueEndTime = Number(ColleguesEndTime.split(":")[0]) + offset;
+    // Adding offset to the colleagues time, as it will convert colleagues time to local time
+    let localColleagueStartTime =
+      Number(colleaguesStartTime.split(":")[0]) + offset;
+    let localColleagueEndTime =
+      Number(ColleaguesEndTime.split(":")[0]) + offset;
 
     let resultString = ``;
 
     // To find the time overlapping
     const result = findRangeIntersection(
       [Number(myStartTime.split(":")[0]), Number(myEndTime.split(":")[0])],
-      [localCollegueStartTime, localCollegueEndTime]
+      [localColleagueStartTime, localColleagueEndTime]
     );
 
     resultString = `${result[0]} - ${result[1]}`;
@@ -123,10 +124,10 @@ export default function App() {
   // START HERE:
   useEffect(() => {
     let [myTimezone = {}] = cityTimeZone.lookupViaCity(myCity);
-    let [collegueTimezone = {}] = cityTimeZone.lookupViaCity(myColleguesCity);
+    let [colleagueTimezone = {}] = cityTimeZone.lookupViaCity(myColleaguesCity);
 
     // SET TIMEZONE DIFFERENCE: We are setting offset here, offset is the difference between two cities.
-    getTimezoneDifference(collegueTimezone.timezone, myTimezone.timezone);
+    getTimezoneDifference(colleagueTimezone.timezone, myTimezone.timezone);
   }, []);
 
   return (
@@ -147,24 +148,24 @@ export default function App() {
 
       <div>
         <Select
-          value={myColleguesCity}
+          value={myColleaguesCity}
           options={options}
           onChange={handleChangeCity2}
         />
       </div>
 
       <div>
-        collegue start time
+        colleague start time
         <input
           type='time'
-          onChange={(e) => setColleguesStartTime(e.target.value)}
+          onChange={(e) => setColleaguesStartTime(e.target.value)}
         />
       </div>
       <div>
-        collegue end time
+        colleague end time
         <input
           type='time'
-          onChange={(e) => setColleguesEndTime(e.target.value)}
+          onChange={(e) => setColleaguesEndTime(e.target.value)}
         />
       </div>
       <button type='button' onClick={handleSubmit}>
