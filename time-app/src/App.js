@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import cityTimeZone from "city-timezones";
 import axios from "axios";
 import Select from "react-select";
+import TimezoneSelect from "react-timezone-select";
 
-const defaultInput = {
-  city: ""
-};
+// const defaultInput = {
+//   city: ""
+// };
 
 export default function App() {
   let myCity = "delhi";
@@ -20,74 +21,8 @@ export default function App() {
   const [ColleguesEndTime, setColleguesEndTime] = useState("");
   const [result, setResult] = useState(null);
 
-  // timeZone
-  const [textInput, setTextInput] = useState(defaultInput);
-  const cityMapping = cityTimeZone.cityMapping;
-  //   const flatCityMap = (arr) => {
-  //     const flatObject = {};
-  //     for (let i = 0; i < arr.length; i++) {
-  //       for (const property in arr[i]) {
-  //         flatObject[`${property}_${i}`] = arr[i][property];
-  //       }
-  //     }
-  //     return flatObject;
-  //   };
-  //   console.log(cityMapping);
-  //   console.log(flatCityMap(cityMapping));
-
-  //   const options = [
-  //     { value: "London", label: "GMT - GMT" },
-  //     { value: "Warsaw", label: "ECT - GMT+1:00" },
-  //     { value: "Aleppo", label: "EET - GMT+2:00" },
-  //     { value: "Cairo", label: "ART - GMT+2:00" },
-  //     { value: "Nairobi", label: "EAT - GMT+3:00" },
-  //     { value: "", label: "MET - GMT+3:30" },
-  //     { value: "", label: "NET - GMT+4:00" },
-  //     { value: "", label: "PLT - GMT+5:00" },
-  //     { value: "", label: "IST - GMT+5:30" },
-  //     { value: "", label: "BST - GMT+6:00" },
-  //     { value: "", label: "VST - GMT+7:00" },
-  //     { value: "", label: "CTT - GMT+8:00" },
-  //     { value: "", label: "JST - GMT+9:00" },
-  //     { value: "", label: "ACT - GMT+9:30" },
-  //     { value: "", label: "AET - GMT+10:00" },
-  //     { value: "", label: "SST - GMT+11:00" },
-  //     { value: "", label: "NST - GMT+12:00" },
-  //     { value: "", label: "MIT - GMT-11:00" },
-  //     { value: "", label: "HST - GMT-10:00" },
-  //     { value: "", label: "AST - GMT-9:00" },
-  //     { value: "", label: "PST - GMT-8:00" },
-  //     { value: "Los Angeles", label: "PNT - GMT-7:00" },
-  //     { value: "Boulder", label: "MST - GMT-7:00" },
-  //     { value: "Dallas", label: "CST - GMT-6:00" },
-  //     { value: "New York", label: "EST - GMT-5:00" },
-  //     { value: "", label: "IET - GMT-5:00" },
-  //     { value: "", label: "PRT - GMT-4:00" },
-  //     { value: "", label: "CNT - GMT-3:00" },
-  //     { value: "", label: "AGT - GMT-3:00" },
-  //     { value: "", label: "BET - GMT-3:00" },
-  //     { value: "", label: "CAT - GMT-1:00" }
-  //   ];
-
-  //   const options2 = [
-  //     { value: "Alofi", label: "Alofi" },
-  //     { value: "Honolulu", label: "Honolulu" },
-  //     { value: "Taiohae", label: "Taiohae" },
-  //     { value: "Juneau", label: "Juneau" },
-  //     { value: "Los Angeles", label: "Los Angeles" },
-  //     { value: "Idaho Falls", label: "Idaho Falls - MST" },
-  //     { value: "NYC", label: "NYC - EST" },
-  //     { value: "London", label: "London - GMT" },
-  //     { value: "Moscow", label: "Moscow" },
-  //     { value: "Delhi", label: "Delhi" }
-  //   ];
-
-  //   const handleChange = (e) => {
-  //     setTextInput({
-  //       ...textInput,
-  //       [e.target.name]: e.target.value
-  //     });
-  //   };
+  const [selectedTimezone, setSelectedTimezone] = useState({});
+  const [selectedTimezone2, setSelectedTimezone2] = useState({});
 
   const findRangeIntersection = (arr1 = [], arr2 = []) => {
     const [el11, el12] = arr1;
@@ -145,31 +80,13 @@ export default function App() {
   return (
     <div className='App'>
       {/* THE API FOR CITIES */}
-      <div>
-        <Select options={options} />
+      <h3>Please make a selection</h3>
+      <div className='select-wrapper'>
+        <TimezoneSelect
+          value={selectedTimezone}
+          onChange={setSelectedTimezone}
+        />
       </div>
-
-      {/* <main>
-        <form className='form' onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <label htmlFor='city'>Select your City</label>
-            <div className='form-field select'>
-              <select
-                id='city'
-                name='city'
-                onChange={handleChange}
-                value={textInput.city}
-              >
-                <option value=''>None Selected</option>
-                <option value='moscow'>Moscow</option>
-                <option value='delhi'>Delhi</option>
-              </select>
-              <span className='focus'></span>
-            </div>
-          </div>
-          <button type='submit'>Submit</button>
-        </form>
-      </main> */}
       <div>
         my start time
         <input type='time' onChange={(e) => setMyStartTime(e.target.value)} />
@@ -178,8 +95,13 @@ export default function App() {
         my end time
         <input type='time' onChange={(e) => setMyEndTime(e.target.value)} />
       </div>
-      <div>
-        <Select options={options2} />
+
+      <h3>Please make a selection</h3>
+      <div className='select-wrapper'>
+        <TimezoneSelect
+          value={selectedTimezone2}
+          onChange={setSelectedTimezone2}
+        />
       </div>
       <div>
         collegue start time
