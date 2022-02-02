@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import cityTimeZone from "city-timezones";
 import axios from "axios";
-// import Select from "react-select";
+import Select from "react-select";
 
-const defaultInput = {
-  city: "",
-  city2: ""
-};
+// const defaultInput = {
+//   city: "",
+//   city2: ""
+// };
 
 export default function App() {
   let myCity = "delhi";
@@ -23,7 +23,7 @@ export default function App() {
   const [result, setResult] = useState(null);
 
   // timeZone
-  const [textInput, setTextInput] = useState(defaultInput);
+  //   const [textInput, setTextInput] = useState(defaultInput);
 
   const options = [
     { value: "Taulaga", label: "UTC-11" },
@@ -105,12 +105,12 @@ export default function App() {
     { value: "Tarawa", label: "UTC+14:00" }
   ];
 
-  const handleChange = (e) => {
-    setTextInput({
-      ...textInput,
-      [e.target.name]: e.target.value
-    });
-  };
+  //   const handleChange = (e) => {
+  //     setTextInput({
+  //       ...textInput,
+  //       [e.target.name]: e.target.value
+  //     });
+  //   };
 
   const findRangeIntersection = (arr1 = [], arr2 = []) => {
     const [el11, el12] = arr1;
@@ -122,7 +122,7 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(textInput);
+    console.log(e);
     // console.log(options2);
     // Adding offset to the collegues time, as it will convert collegues time to local time
     let localCollegueStartTime =
@@ -176,66 +176,10 @@ export default function App() {
   return (
     <div className='App'>
       {/* THE API FOR CITIES */}
-      {/* <div>
-        <Select options={options} onClick={handleSubmit} />
-      </div> */}
+      <div>
+        <Select options={options} />
+      </div>
 
-      <main>
-        <form className='form' onSubmit={handleSubmit}>
-          <div className='form-group'>
-            <label htmlFor='city'>Select your Time Zone</label>
-            <div className='form-field select'>
-              <select
-                id='city'
-                name='city'
-                onChange={handleChange}
-                value={textInput.city}
-              >
-                <option value=''>None Selected</option>
-                <option value='Taulaga'>UTC-11</option>
-                <option value='Avarua'>UTC-10</option>
-                <option value='Taiohae'>UTC-9:30</option>
-                <option value='Juneau'>UTC-9:00</option>
-                <option value='Los Angeles'>UTC-8:00</option>
-                <option value='Boise'>"UTC-7:00</option>
-                <option value='Dangriga'>UTC-6:00</option>
-                <option value='Toronto'>UTC-5:00</option>
-                <option value='Holetown'>UTC-4:00</option>
-                <option value='Conception Bay South'>UTC-3:30</option>
-                <option value='Buenos Aires'>UTC-3:00</option>
-                <option value='Grytviken'>UTC-2:00</option>
-                <option value='Praia'>UTC-1:00</option>
-                <option value='London'>UTC-0:00</option>
-                <option value='Algiers'>UTC+1:00</option>
-                <option value='Cairo'>>UTC+2:00</option>
-                <option value='Asmara'>UTC+3:00</option>
-                <option value='Tehran'>UTC+3:30</option>
-                <option value='Muscat'>UTC+4:00</option>
-                <option value='Kabul'>UTC+4:30</option>
-                <option value='Salqar'>UTC+5:00</option>
-                <option value='Negombo'>UTC+5:30</option>
-                <option value='Kathmandu'>UTC+5:45</option>
-                <option value='Karagandy'>UTC+6:00</option>
-                <option value='Yangon'>UTC+6:30</option>
-                <option value='Bangkok'>UTC+7:00</option>
-                <option value='Hong Kong'>UTC+8:00</option>
-                <option value='Caiguna'>UTC+8:45</option>
-                <option value='Seoul'>UTC+9:00</option>
-                <option value='Darwin'>UTC+9:30</option>
-                <option value='Vladivostok'>UTC+10:00</option>
-                <option value='Adelaide'>UTC+10:30</option>
-                <option value='Buka'>UTC+11:00</option>
-                <option value='Bilibino'>UTC+12:00</option>
-                <option value='Waitangi'>UTC+12:45</option>
-                <option value='Apia'>UTC+13:00</option>
-                <option value='Tarawa'>UTC+14:00</option>
-              </select>
-              <span className='focus'></span>
-            </div>
-          </div>
-          {/* <button type='submit'>Submit</button> */}
-        </form>
-      </main>
       <div>
         my start time
         <input type='time' onChange={(e) => setMyStartTime(e.target.value)} />
@@ -245,9 +189,9 @@ export default function App() {
         <input type='time' onChange={(e) => setMyEndTime(e.target.value)} />
       </div>
 
-      {/* <div>
-        <Select options={options2} onClick={handleSubmit} />
-      </div> */}
+      <div>
+        <Select options={options2} />
+      </div>
       <div>
         collegue start time
         <input
@@ -269,3 +213,61 @@ export default function App() {
     </div>
   );
 }
+
+////////////
+//   <main>
+//     <form className='form' onSubmit={handleSubmit}>
+//       <div className='form-group'>
+//         <label htmlFor='city'>Select your Time Zone</label>
+//         <div className='form-field select'>
+//           <select
+//             id='city'
+//             name='city'
+//             onChange={handleChange}
+//             value={textInput.city}
+//           >
+//             <option value=''>None Selected</option>
+//             <option value='Taulaga'>UTC-11</option>
+//             <option value='Avarua'>UTC-10</option>
+//             <option value='Taiohae'>UTC-9:30</option>
+//             <option value='Juneau'>UTC-9:00</option>
+//             <option value='Los Angeles'>UTC-8:00</option>
+//             <option value='Boise'>"UTC-7:00</option>
+//             <option value='Dangriga'>UTC-6:00</option>
+//             <option value='Toronto'>UTC-5:00</option>
+//             <option value='Holetown'>UTC-4:00</option>
+//             <option value='Conception Bay South'>UTC-3:30</option>
+//             <option value='Buenos Aires'>UTC-3:00</option>
+//             <option value='Grytviken'>UTC-2:00</option>
+//             <option value='Praia'>UTC-1:00</option>
+//             <option value='London'>UTC-0:00</option>
+//             <option value='Algiers'>UTC+1:00</option>
+//             <option value='Cairo'>>UTC+2:00</option>
+//             <option value='Asmara'>UTC+3:00</option>
+//             <option value='Tehran'>UTC+3:30</option>
+//             <option value='Muscat'>UTC+4:00</option>
+//             <option value='Kabul'>UTC+4:30</option>
+//             <option value='Salqar'>UTC+5:00</option>
+//             <option value='Negombo'>UTC+5:30</option>
+//             <option value='Kathmandu'>UTC+5:45</option>
+//             <option value='Karagandy'>UTC+6:00</option>
+//             <option value='Yangon'>UTC+6:30</option>
+//             <option value='Bangkok'>UTC+7:00</option>
+//             <option value='Hong Kong'>UTC+8:00</option>
+//             <option value='Caiguna'>UTC+8:45</option>
+//             <option value='Seoul'>UTC+9:00</option>
+//             <option value='Darwin'>UTC+9:30</option>
+//             <option value='Vladivostok'>UTC+10:00</option>
+//             <option value='Adelaide'>UTC+10:30</option>
+//             <option value='Buka'>UTC+11:00</option>
+//             <option value='Bilibino'>UTC+12:00</option>
+//             <option value='Waitangi'>UTC+12:45</option>
+//             <option value='Apia'>UTC+13:00</option>
+//             <option value='Tarawa'>UTC+14:00</option>
+//           </select>
+//           <span className='focus'></span>
+//         </div>
+//       </div>
+//       <button type='submit'>Submit</button>
+//     </form>
+//   </main>;
