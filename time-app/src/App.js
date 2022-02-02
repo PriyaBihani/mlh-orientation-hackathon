@@ -9,6 +9,7 @@ const defaultInput = {
 
 export default function App() {
   let myCity = "delhi";
+  // let myCity = value from onChange.split(' - ')[0]?
   let myColleguesCity = "moscow";
 
   const api_key = "FAJIO7OXE21N";
@@ -34,20 +35,59 @@ export default function App() {
   //   console.log(cityMapping);
   //   console.log(flatCityMap(cityMapping));
 
-  const options = [
-    { value: "Los Angeles", label: "Los Angeles" },
-    { value: "NYC", label: "NYC" },
-    { value: "London", label: "London" },
-    { value: "Moscow", label: "Moscow" },
-    { value: "Delhi", label: "Delhi" }
-  ];
+  //   const options = [
+  //     { value: "London", label: "GMT - GMT" },
+  //     { value: "Warsaw", label: "ECT - GMT+1:00" },
+  //     { value: "Aleppo", label: "EET - GMT+2:00" },
+  //     { value: "Cairo", label: "ART - GMT+2:00" },
+  //     { value: "Nairobi", label: "EAT - GMT+3:00" },
+  //     { value: "", label: "MET - GMT+3:30" },
+  //     { value: "", label: "NET - GMT+4:00" },
+  //     { value: "", label: "PLT - GMT+5:00" },
+  //     { value: "", label: "IST - GMT+5:30" },
+  //     { value: "", label: "BST - GMT+6:00" },
+  //     { value: "", label: "VST - GMT+7:00" },
+  //     { value: "", label: "CTT - GMT+8:00" },
+  //     { value: "", label: "JST - GMT+9:00" },
+  //     { value: "", label: "ACT - GMT+9:30" },
+  //     { value: "", label: "AET - GMT+10:00" },
+  //     { value: "", label: "SST - GMT+11:00" },
+  //     { value: "", label: "NST - GMT+12:00" },
+  //     { value: "", label: "MIT - GMT-11:00" },
+  //     { value: "", label: "HST - GMT-10:00" },
+  //     { value: "", label: "AST - GMT-9:00" },
+  //     { value: "", label: "PST - GMT-8:00" },
+  //     { value: "Los Angeles", label: "PNT - GMT-7:00" },
+  //     { value: "Boulder", label: "MST - GMT-7:00" },
+  //     { value: "Dallas", label: "CST - GMT-6:00" },
+  //     { value: "New York", label: "EST - GMT-5:00" },
+  //     { value: "", label: "IET - GMT-5:00" },
+  //     { value: "", label: "PRT - GMT-4:00" },
+  //     { value: "", label: "CNT - GMT-3:00" },
+  //     { value: "", label: "AGT - GMT-3:00" },
+  //     { value: "", label: "BET - GMT-3:00" },
+  //     { value: "", label: "CAT - GMT-1:00" }
+  //   ];
 
-  const handleChange = (e) => {
-    setTextInput({
-      ...textInput,
-      [e.target.name]: e.target.value
-    });
-  };
+  //   const options2 = [
+  //     { value: "Alofi", label: "Alofi" },
+  //     { value: "Honolulu", label: "Honolulu" },
+  //     { value: "Taiohae", label: "Taiohae" },
+  //     { value: "Juneau", label: "Juneau" },
+  //     { value: "Los Angeles", label: "Los Angeles" },
+  //     { value: "Idaho Falls", label: "Idaho Falls - MST" },
+  //     { value: "NYC", label: "NYC - EST" },
+  //     { value: "London", label: "London - GMT" },
+  //     { value: "Moscow", label: "Moscow" },
+  //     { value: "Delhi", label: "Delhi" }
+  //   ];
+
+  //   const handleChange = (e) => {
+  //     setTextInput({
+  //       ...textInput,
+  //       [e.target.name]: e.target.value
+  //     });
+  //   };
 
   const findRangeIntersection = (arr1 = [], arr2 = []) => {
     const [el11, el12] = arr1;
@@ -105,7 +145,10 @@ export default function App() {
   return (
     <div className='App'>
       {/* THE API FOR CITIES */}
-      <Select options={options} />
+      <div>
+        <Select options={options} />
+      </div>
+
       {/* <main>
         <form className='form' onSubmit={handleSubmit}>
           <div className='form-group'>
@@ -134,6 +177,9 @@ export default function App() {
       <div>
         my end time
         <input type='time' onChange={(e) => setMyEndTime(e.target.value)} />
+      </div>
+      <div>
+        <Select options={options2} />
       </div>
       <div>
         collegue start time
