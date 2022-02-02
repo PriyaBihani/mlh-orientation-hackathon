@@ -105,12 +105,13 @@ export default function App() {
     { value: "Tarawa", label: "UTC+14:00" }
   ];
 
-  //   const handleChange = (e) => {
-  //     setTextInput({
-  //       ...textInput,
-  //       [e.target.name]: e.target.value
-  //     });
-  //   };
+  // set state for dropdown
+  const [selectedValue, setSelectedValue] = useState(null);
+
+  const handleChange = (obj) => {
+    setSelectedValue(obj);
+    console.log(obj.value);
+  };
 
   const findRangeIntersection = (arr1 = [], arr2 = []) => {
     const [el11, el12] = arr1;
@@ -122,7 +123,6 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
     // console.log(options2);
     // Adding offset to the collegues time, as it will convert collegues time to local time
     let localCollegueStartTime =
@@ -168,17 +168,25 @@ export default function App() {
   }, []);
 
   // handling change from drop down
-  const handleSelect = (e) => {
-    e.preventDefault();
-    console.log(e);
-  };
+  //   const handleSelect = (e) => {
+  //     e.preventDefault();
+  //     console.log(e);
+  //   };
 
   return (
     <div className='App'>
       {/* THE API FOR CITIES */}
       <div>
-        <Select options={options} />
+        <Select
+          value={selectedValue}
+          options={options}
+          onChange={handleChange}
+        />
       </div>
+
+      <br />
+      <b>Selected Time Zone:</b>
+      <pre>{JSON.stringify(selectedValue, null, 2)}</pre>
 
       <div>
         my start time
@@ -190,8 +198,17 @@ export default function App() {
       </div>
 
       <div>
-        <Select options={options2} />
+        <Select
+          value={selectedValue}
+          options={options2}
+          onChange={handleChange}
+        />
       </div>
+
+      <br />
+      <b>Selected Time Zone:</b>
+      <pre>{JSON.stringify(selectedValue, null, 2)}</pre>
+
       <div>
         collegue start time
         <input
