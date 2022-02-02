@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import cityTimeZone from "city-timezones";
 import axios from "axios";
+import Select from "react-select";
 
 const defaultInput = {
   city: ""
@@ -17,11 +18,28 @@ export default function App() {
   const [colleguesStartTime, setColleguesStartTime] = useState("");
   const [ColleguesEndTime, setColleguesEndTime] = useState("");
   const [result, setResult] = useState(null);
-  // timeZone
 
+  // timeZone
   const [textInput, setTextInput] = useState(defaultInput);
   const cityMapping = cityTimeZone.cityMapping;
-  console.log(cityMapping);
+  //   const flatCityMap = (arr) => {
+  //     const flatObject = {};
+  //     for (let i = 0; i < arr.length; i++) {
+  //       for (const property in arr[i]) {
+  //         flatObject[`${property}_${i}`] = arr[i][property];
+  //       }
+  //     }
+  //     return flatObject;
+  //   };
+  //   console.log(cityMapping);
+  //   console.log(flatCityMap(cityMapping));
+
+  const options = [
+    { value: "NYC", label: "NYC" },
+    { value: "London", label: "London" },
+    { value: "Moscow", label: "Moscow" },
+    { value: "Delhi", label: "Delhi" }
+  ];
 
   const handleChange = (e) => {
     setTextInput({
@@ -39,7 +57,7 @@ export default function App() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // Adding offset to the collegues time, as it will convert collegues time to local time
     let localCollegueStartTime =
       Number(colleguesStartTime.split(":")[0]) + offset;
@@ -86,7 +104,8 @@ export default function App() {
   return (
     <div className='App'>
       {/* THE API FOR CITIES */}
-      <main>
+      <Select options={options} />
+      {/* <main>
         <form className='form' onSubmit={handleSubmit}>
           <div className='form-group'>
             <label htmlFor='city'>Select your City</label>
@@ -106,7 +125,7 @@ export default function App() {
           </div>
           <button type='submit'>Submit</button>
         </form>
-      </main>
+      </main> */}
       <div>
         my start time
         <input type='time' onChange={(e) => setMyStartTime(e.target.value)} />
