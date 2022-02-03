@@ -1,12 +1,17 @@
 import axios from 'axios';
 
-const api_key = 'FAJIO7OXE21N';
-
 export const getTimezoneDifference = async (from, to) => {
 	try {
 		const res = await axios.get(
 			'http://api.timezonedb.com/v2.1/convert-time-zone',
-			{ params: { key: api_key, from, to, format: 'json' } }
+			{
+				params: {
+					key: process.env.REACT_APP_API_KEY,
+					from,
+					to,
+					format: 'json',
+				},
+			}
 		);
 
 		let offset = res.data.offset / 3600;
