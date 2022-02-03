@@ -17,7 +17,8 @@ Time Scheduling App is a React App, meant to help students in the MLH Fellowship
 
 <img width="1091" alt="Screen Shot 2022-02-03 at 10 42 55 AM" src="https://user-images.githubusercontent.com/26771302/152377328-f0a83927-dc96-44eb-a980-fcf40149d89b.png">
 
----
+---<img width="836" alt="Screen Shot 2022-02-03 at 12 08 14 PM" src="https://user-images.githubusercontent.com/26771302/152393043-c62ad40e-7e83-4af1-b600-6aa0fded6537.png">
+
 
 ## Contributors
 
