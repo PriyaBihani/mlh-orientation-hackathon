@@ -1,37 +1,333 @@
+/*--------------------------------------------------------------------------*\
+   Reset
+\*--------------------------------------------------------------------------*/
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+ul[class],
+ol[class] {
+  list-style: none;
 }
 
-/* Don't remove these styles, its for select option */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*--------------------------------------------------------------------------*\
+   Global styles
+\*--------------------------------------------------------------------------*/
+
+.color-primary {
+  color: hsl(0, 0%, 20%);
+}
+
+.font-base {
+  font-family: "IBM Plex Sans", Helvetica, Arial, sans-serif;
+}
+
+.gap-top-600 {
+  margin-top: 1.77rem;
+}
+
+.gap-top-700 {
+  margin-top: 2.4rem;
+}
+
+.text-600 {
+  font-size: 1.77rem;
+}
+
+.text-700 {
+  font-size: 2.4rem;
+}
+
+@media screen and (min-width: 48em) {
+  .md\:text-600 {
+    font-size: 1.77rem;
+  }
+  .md\:text-700 {
+    font-size: 2.4rem;
+  }
+}
+
+body {
+  overflow-x: hidden;
+  padding-bottom: 1.77rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.4rem;
+}
+
+h2,
+h3 {
+  font-size: 1.77rem;
+}
+
+a {
+  color: currentColor;
+}
+
+.flow > * + * {
+  margin-top: var(--flow-space, 1rem);
+}
+
+.radius,
+.button {
+  border-radius: 0.5rem;
+}
+
+.splitter > :last-child {
+  margin-top: 1.33rem;
+}
+
+@media (min-width: 48em) {
+  .splitter {
+    display: flex;
+  }
+  .splitter > * {
+    flex-grow: 1;
+  }
+  .splitter > :last-child {
+    margin-top: 0;
+    margin-left: 1.33rem;
+    min-width: 22rem;
+  }
+}
+
+.wrapper {
+  max-width: 75rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.33rem;
+}
+
+.btn-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  position: relative;
+  display: inline-block;
+  padding: 8px 12px;
+  border: 2px solid grey;
+  background: transparent;
+  font: inherit;
+  line-height: 1;
+}
+
+.button:hover {
+  background: #231651;
+  border-color: #231651;
+  color: #fafafa;
+}
+
+.button:active {
+  transform: scale(0.95);
+}
+
+.key-header {
+  align-items: flex-end;
+}
+
+.key-header > :last-child {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.key-header > :last-child {
+  padding: 1.5rem;
+}
+@media screen and (min-width: 48em) {
+  .key-header > :last-child {
+    padding: 0;
+  }
+}
+.key-header > :last-child > * {
+  flex-shrink: 0;
+}
+
+.key-header span {
+  overflow-wrap: break-word;
+  hyphens: auto;
+  font-size: 1.2rem;
+}
+@media screen and (min-width: 48em) {
+  .key-header span {
+    font-size: 2.375rem;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+}
+
+.site-head {
+  padding: 0.4rem 0 0.8rem 0;
+}
+
+.site-head__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.site-head h1 {
+  margin: 0.5rem 1rem 0.5rem 0;
+}
+
+/*--------------------------------------------------------------------------*\
+  FORM
+\*--------------------------------------------------------------------------*/
+.form {
+  max-width: 480px;
+  width: 100%;
+  padding: 24px;
+}
+
+.form__field {
+  margin-bottom: 20px;
+}
+
+.form__field__label {
+  display: block;
+  color: black;
+  font-size: 0.85rem;
+  font-weight: lighter;
+  text-align: left;
+}
+
+.form__field__input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 4px;
+  border-style: solid;
+  color: hsl(0, 0%, 20%);
+  font-size: 1.05rem;
+}
+
+.form__field .form__field__input:focus {
+  outline: none;
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+}
+
+#react-select-3-input {
+  border-radius: 4px;
+  border-style: solid;
+  font-size: 1.05rem;
+  padding: 12px;
+  width: 100%;
+}
+
+.css-1s2u09g-control {
+  border: 2px solid grey !important;
+}
+
+.css-6j8wv5-Input {
+  padding: 9px !important;
+}
+
+.css-6j8wv5-Input #react-select-3-input {
+  border-radius: 4px !important;
+  border-style: solid !important;
+}
+
+.css-1pahdxg-control {
+  border-color: #9ecaed !important;
+  box-shadow: 0 0 10px #9ecaed !important;
+}
+
+#react-select-3-placeholder {
+  color: hsl(0, 0%, 20%);
+}
+
+#react-select-3-listbox {
+  color: hsl(0, 0%, 20%);
+}
+
 .custom-option {
-	transition: background 60ms;
+  transition: background 60ms;
 }
 .custom-option:hover {
-	transition-delay: 60ms;
-	background: #deebff;
+  transition-delay: 60ms;
+  background: #deebff;
 }
 .custom-option.custom-select__option--is-focused {
-	background: none;
+  background: none;
 }
 .custom-option.custom-select__option--is-selected {
-	background: #2684ff;
+  background: #2684ff;
 }
 
 .react-virtualized-menu-placeholder {
-	margin-top: 12px;
-	color: #9a9a9a;
-	text-align: center;
+  margin-top: 12px;
+  color: #9a9a9a;
+  text-align: center;
 }
 .react-virtualized-list-wrapper li {
-	list-style: none;
+  list-style: none;
 }
