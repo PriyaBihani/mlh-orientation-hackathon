@@ -1,100 +1,144 @@
-import { useEffect, useState } from 'react';
-import cityTimeZone from 'city-timezones';
-import axios from 'axios';
+import { useState } from "react";
+import cityTimeZone from "city-timezones";
+import Select, { createFilter } from "react-select";
+
+import data from "./data.json";
+import CustomOption from "./components/CustomOption";
+import CustomMenuList from "./components/CustomMenuList";
+
+import { getTimezoneDifference, findRangeIntersection } from "./helpers";
+
+const { options } = data;
 
 export default function App() {
-	let myCity = 'delhi';
-	let myColleguesCity = 'moscow';
+  const [myStartTime, setMyStartTime] = useState("");
+  const [myEndTime, setMyEndTime] = useState("");
+  const [colleaguesStartTime, setColleaguesStartTime] = useState("");
+  const [colleaguesEndTime, setColleaguesEndTime] = useState("");
+  const [result, setResult] = useState(null);
+  const [myCity, setMyCity] = useState("");
+  const [myColleaguesCity, setColleaguesCity] = useState("");
 
-	const api_key = 'FAJIO7OXE21N';
-	const [offset, setOffset] = useState(1);
-	const [myStartTime, setMyStartTime] = useState('');
-	const [myEndTime, setMyEndTime] = useState('');
-	const [colleguesStartTime, setColleguesStartTime] = useState('');
-	const [ColleguesEndTime, setColleguesEndTime] = useState('');
-	const [result, setResult] = useState(null);
+  const handleSubmit = async () => {
+    let [myTimezone = {}] = cityTimeZone.lookupViaCity(myCity);
+    let [colleagueTimezone = {}] = cityTimeZone.lookupViaCity(myColleaguesCity);
+    let offset = await getTimezoneDifference(colleagueTimezone.timezone, myTimezone.timezone);
+    let localColleagueStartTime = Number(colleaguesStartTime.split(":")[0]) + offset;
+    let localColleagueEndTime = Number(colleaguesEndTime.split(":")[0]) + offset;
 
-	const findRangeIntersection = (arr1 = [], arr2 = []) => {
-		const [el11, el12] = arr1;
-		const [el21, el22] = arr2;
-		const leftLimit = Math.max(el11, el21);
-		const rightLimit = Math.min(el12, el22);
-		return [leftLimit, rightLimit];
-	};
+    let resultString = ``;
 
-	const handleSubmit = () => {
-		// Adding offset to the collegues time, as it will convert collegues time to local time
-		let localCollegueStartTime =
-			Number(colleguesStartTime.split(':')[0]) + offset;
-		let localCollegueEndTime = Number(ColleguesEndTime.split(':')[0]) + offset;
+    const result = findRangeIntersection(
+      [Number(myStartTime.split(":")[0]), Number(myEndTime.split(":")[0])],
+      [localColleagueStartTime, localColleagueEndTime]
+    );
 
-		let resultString = ``;
+    resultString = `${result[0]} hours - ${result[1]} hours`;
+    setResult(resultString);
+  };
 
-		// To find the time overlapping
-		const result = findRangeIntersection(
-			[Number(myStartTime.split(':')[0]), Number(myEndTime.split(':')[0])],
-			[localCollegueStartTime, localCollegueEndTime]
-		);
+  return (
+    <div className="color-primary font-base">
+      <main>
+        <article className="wrapper">
+          {result ? (
+            <div className="key-header splitter gap-top-700">
+              <h2 className="text-700">
+                Your common working hours:
+                <span>{result}</span>
+              </h2>
+            </div>
+          ) : (
+            <div className="key-header splitter gap-top-700">
+              <h2 className="text-700">Find your common working hours</h2>
+            </div>
+          )}
 
-		resultString = `${result[0]} - ${result[1]}`;
-		setResult(resultString);
-	};
-
-	const getTimezoneDifference = async (from, to) => {
-		try {
-			const res = await axios.get(
-				'http://api.timezonedb.com/v2.1/convert-time-zone',
-				{ params: { key: api_key, from, to, format: 'json' } }
-			);
-
-			// This will give us timestamp difference between two cities
-			console.log(res.data);
-			let offset = res.data.offset / 3600; // We are dividing by 3600 to get hours
-
-			setOffset(offset);
-		} catch (error) {
-			console.log(error.message);
-		}
-	};
-
-	// START HERE:
-	useEffect(() => {
-		let [myTimezone = {}] = cityTimeZone.lookupViaCity(myCity);
-		let [collegueTimezone = {}] = cityTimeZone.lookupViaCity(myColleguesCity);
-
-		// SET TIMEZONE DIFFERENCE: We are setting offset here, offset is the difference between two cities.
-		getTimezoneDifference(collegueTimezone.timezone, myTimezone.timezone);
-	}, []);
-
-	return (
-		<div className='App'>
-			{/* THE API FOR CITIES */}
-			<div>
-				my start time
-				<input type='time' onChange={(e) => setMyStartTime(e.target.value)} />
-			</div>
-			<div>
-				my end time
-				<input type='time' onChange={(e) => setMyEndTime(e.target.value)} />
-			</div>
-			<div>
-				collegue start time
-				<input
-					type='time'
-					onChange={(e) => setColleguesStartTime(e.target.value)}
-				/>
-			</div>
-			<div>
-				collegue end time
-				<input
-					type='time'
-					onChange={(e) => setColleguesEndTime(e.target.value)}
-				/>
-			</div>
-			<button type='button' onClick={handleSubmit}>
-				Get Over lapping hours
-			</button>
-			<div>{result && result}</div>
-		</div>
-	);
+          <div className="splitter gap-top-600">
+            <section class="flow">
+              <form className="form">
+                <div className="form__field">
+                  <span className="form__field__label" for="time">
+                    My timezone
+                  </span>
+                  <Select
+                    onChange={(obj) => setMyCity(obj.value)}
+                    options={options}
+                    filterOption={createFilter({ ignoreAccents: false })}
+                    components={{ Option: CustomOption, MenuList: CustomMenuList }}
+                    className="form__field__input1"
+                  />
+                </div>
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    My start time:
+                  </label>
+                  <input
+                    className="form__field__input"
+                    type="time"
+                    onChange={(e) => setMyStartTime(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    My end time:
+                  </label>
+                  <input
+                    className="form__field__input"
+                    type="time"
+                    onChange={(e) => setMyEndTime(e.target.value)}
+                    required
+                  />
+                </div>
+              </form>
+            </section>
+            <section>
+              <form className="form">
+                <div className="form__field">
+                  <span className="form__field__label" for="time">
+                    Teammate's timezone
+                  </span>
+                  <Select
+                    onChange={(obj) => setColleaguesCity(obj.value)}
+                    options={options}
+                    filterOption={createFilter({ ignoreAccents: false })}
+                    components={{ Option: CustomOption, MenuList: CustomMenuList }}
+                    className="form__field__input1"
+                  />
+                </div>
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    Teammate's start time
+                  </label>
+                  <input
+                    className="form__field__input"
+                    type="time"
+                    onChange={(e) => setColleaguesStartTime(e.target.value)}
+                    required
+                  />
+                </div>
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    Teammate's end time
+                  </label>
+                  <input
+                    className="form__field__input"
+                    type="time"
+                    onChange={(e) => setColleaguesEndTime(e.target.value)}
+                    required
+                  />
+                </div>
+              </form>
+            </section>
+          </div>
+          <div class="btn-container">
+            <button type="button" onClick={handleSubmit} className="button radius">
+              Get overlapping hours
+            </button>
+          </div>
+        </article>
+      </main>
+    </div>
+  );
 }
