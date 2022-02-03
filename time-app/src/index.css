@@ -1,13 +1,37 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+/* Don't remove these styles, its for select option */
+.custom-option {
+	transition: background 60ms;
+}
+.custom-option:hover {
+	transition-delay: 60ms;
+	background: #deebff;
+}
+.custom-option.custom-select__option--is-focused {
+	background: none;
+}
+.custom-option.custom-select__option--is-selected {
+	background: #2684ff;
+}
+
+.react-virtualized-menu-placeholder {
+	margin-top: 12px;
+	color: #9a9a9a;
+	text-align: center;
+}
+.react-virtualized-list-wrapper li {
+	list-style: none;
 }
