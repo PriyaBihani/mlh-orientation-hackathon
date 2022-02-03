@@ -41,13 +41,13 @@ export default function App() {
           {result ? (
             <div className="key-header splitter gap-top-700">
               <h2 className="text-700">
-                Your common working hours:
+                Your shared working hours:
                 <span>{result}</span>
               </h2>
             </div>
           ) : (
             <div className="key-header splitter gap-top-700">
-              <h2 className="text-700">Find your common working hours</h2>
+              <h2 className="text-700">Find your shared working hours</h2>
             </div>
           )}
 
