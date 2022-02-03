@@ -1,5 +1,4 @@
 import { useState } from "react";
-import cityTimeZone from "city-timezones";
 import Select, { createFilter } from "react-select";
 
 import data from "./data.json";
@@ -20,9 +19,7 @@ export default function App() {
   const [myColleaguesCity, setColleaguesCity] = useState("");
 
   const handleSubmit = async () => {
-    let [myTimezone = {}] = cityTimeZone.lookupViaCity(myCity);
-    let [colleagueTimezone = {}] = cityTimeZone.lookupViaCity(myColleaguesCity);
-    let offset = await getTimezoneDifference(colleagueTimezone.timezone, myTimezone.timezone);
+    let offset = await getTimezoneDifference(myColleaguesCity, myCity);
     let localColleagueStartTime = Number(colleaguesStartTime.split(":")[0]) + offset;
     let localColleagueEndTime = Number(colleaguesEndTime.split(":")[0]) + offset;
 
