@@ -53,7 +53,7 @@ export default function App() {
     { value: "Bilibino", label: "UTC+12:00" },
     { value: "Waitangi", label: "UTC+12:45" },
     { value: "Apia", label: "UTC+13:00" },
-    { value: "Tarawa", label: "UTC+14:00" }
+    { value: "Tarawa", label: "UTC+14:00" },
   ];
 
   const handleChangeCity1 = (obj) => {
@@ -80,8 +80,7 @@ export default function App() {
 
   const handleSubmit = () => {
     // Adding offset to the collegues time, as it will convert collegues time to local time
-    let localCollegueStartTime =
-      Number(colleguesStartTime.split(":")[0]) + offset;
+    let localCollegueStartTime = Number(colleguesStartTime.split(":")[0]) + offset;
     let localCollegueEndTime = Number(ColleguesEndTime.split(":")[0]) + offset;
 
     let resultString = ``;
@@ -98,10 +97,9 @@ export default function App() {
 
   const getTimezoneDifference = async (from, to) => {
     try {
-      const res = await axios.get(
-        "http://api.timezonedb.com/v2.1/convert-time-zone",
-        { params: { key: api_key, from, to, format: "json" } }
-      );
+      const res = await axios.get("http://api.timezonedb.com/v2.1/convert-time-zone", {
+        params: { key: api_key, from, to, format: "json" },
+      });
 
       // This will give us timestamp difference between two cities
       console.log(res.data);
@@ -123,45 +121,110 @@ export default function App() {
   }, []);
 
   return (
-    <div className='App'>
-      {/* THE API FOR CITIES */}
-      <div>
-        <Select value={myCity} options={options} onChange={handleChangeCity1} />
-      </div>
-      <div>
-        my start time
-        <input type='time' onChange={(e) => setMyStartTime(e.target.value)} />
-      </div>
-      <div>
-        my end time
-        <input type='time' onChange={(e) => setMyEndTime(e.target.value)} />
-      </div>
+    <div className="color-primary font-base">
+      <main>
+        <article className="wrapper">
+          {result ? (
+            <div className="key-header splitter gap-top-700">
+              <h2 className="text-700">
+                Your common working hours
+                <span>{result}</span>
+              </h2>
+            </div>
+          ) : (
+            <div className="key-header splitter gap-top-700">
+              <h2 className="text-700">Find your common working hours</h2>
+            </div>
+          )}
 
-      <div>
-        <Select
-          value={myColleguesCity}
-          options={options}
-          onChange={handleChangeCity2}
-        />
-      </div>
-      <div>
-        colleague start time
-        <input
-          type='time'
-          onChange={(e) => setColleguesStartTime(e.target.value)}
-        />
-      </div>
-      <div>
-        colleague end time
-        <input
-          type='time'
-          onChange={(e) => setColleguesEndTime(e.target.value)}
-        />
-      </div>
-      <button type='button' onClick={handleSubmit}>
-        Get Over lapping hours
-      </button>
-      <div>{result && result}</div>
+          <div className="splitter gap-top-600">
+            <section class="flow">
+              <form className="form">
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    My timezone
+                  </label>
+                  <Select
+                    value={myCity}
+                    options={options}
+                    onChange={handleChangeCity1}
+                    className="form__field__input1"
+                  />
+                </div>
+
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    My start time:
+                  </label>
+                  <input
+                    className="form__field__input"
+                    type="time"
+                    onChange={(e) => setMyStartTime(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    My end time:
+                  </label>
+                  <input
+                    className="form__field__input"
+                    type="time"
+                    onChange={(e) => setMyEndTime(e.target.value)}
+                    required
+                  />
+                </div>
+              </form>
+            </section>
+
+            <section>
+              <form className="form">
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    Teammate's timezone
+                  </label>
+                  <Select
+                    className="form__field__input1"
+                    value={myColleguesCity}
+                    options={options}
+                    onChange={handleChangeCity2}
+                  />
+                </div>
+
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    Teammate's start time
+                  </label>
+                  <input
+                    className="form__field__input"
+                    type="time"
+                    onChange={(e) => setColleguesStartTime(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="form__field">
+                  <label className="form__field__label" for="time">
+                    Teammate's end time
+                  </label>
+                  <input
+                    className="form__field__input"
+                    type="time"
+                    onChange={(e) => setColleguesEndTime(e.target.value)}
+                    required
+                  />
+                </div>
+              </form>
+            </section>
+          </div>
+          <div class="btn-container">
+            <button type="button" onClick={handleSubmit} className="button radius">
+              Get overlapping hours
+            </button>
+          </div>
+        </article>
+      </main>
     </div>
   );
 }
