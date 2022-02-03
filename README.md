@@ -14,3 +14,5 @@ Time Scheduling App is a React App, meant to help students in the MLH Fellowship
 6. Run `npm start`. ✔️
 7. Your browswer should open to `localhost:3000`. ✔️
 8. Once there, you can search for your city from the dropdown menu. Input your start time and end time. Do the same for your podmate. The app will calculate what hours overlap and let you know what times during your working day, your podmate is available. ✔️
+
+<img width="1091" alt="Screen Shot 2022-02-03 at 10 42 55 AM" src="https://user-images.githubusercontent.com/26771302/152377328-f0a83927-dc96-44eb-a980-fcf40149d89b.png">
