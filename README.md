@@ -1,4 +1,4 @@
-# mlh-orientation-hackathon - Time Scheduling App ⏰
+# MLH Orientation Hackathon - Time Scheduling App ⏰
 
 ## Project Description
 
@@ -21,9 +21,9 @@ Time Scheduling App is a React App, meant to help students in the MLH Fellowship
 
 ## Contributors
 
-[Katia Utochkina](https://github.com/katia-utochkina)
-[Priya Bihani](https://github.com/PriyaBihani)
-[Dani Schuhman](https://github.com/dani8439)
+- [Katia Utochkina](https://github.com/katia-utochkina)
+- [Priya Bihani](https://github.com/PriyaBihani)
+- [Dani Schuhman](https://github.com/dani8439)
 
 ---
 
