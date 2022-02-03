@@ -30,7 +30,7 @@ export default function App() {
       [localColleagueStartTime, localColleagueEndTime]
     );
 
-    resultString = `${result[0]} hours - ${result[1]} hours`;
+    resultString = `${result[0]}:00 - ${result[1]}:00 `;
     setResult(resultString);
   };
 
