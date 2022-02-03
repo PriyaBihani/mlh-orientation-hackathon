@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Time Scheduling App is a React App, meant to help students in the MLH Fellowship find a better way of working across the world, and in different time zones than their fellow students. It helps students find what hours of their working day, overlap with their teammates in order to facilitate synchronous work.
+Time Scheduling App is a React App, built with React, JavaScript, HTML and CSS. It is meant to help students in the MLH Fellowship find a better way of working across the world, and in different time zones than their fellow students. It helps students find what hours of their working day, overlap with their teammates in order to facilitate synchronous work.
 
 ## Instructions
 
