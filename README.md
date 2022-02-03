@@ -11,9 +11,10 @@ Time Scheduling App is a React App, meant to help students in the MLH Fellowship
 3. CD into `time-app`. ✔️
 4. Run `npm install` to install all modules listed on the `package.json` file and their dependencies. ✔️
 5. Create a `.env` file. In the `.env` file, paste this code `REACT_APP_API_KEY=FAJIO7OXE21N`. ✔️
-6. Run `npm start`. ✔️
-7. Your browswer should open to `localhost:3000`. ✔️
-8. Once there, you can search for your city from the dropdown menu. Input your start time and end time. Do the same for your podmate. The app will calculate what hours overlap and let you know what times during your working day, your podmate is available. ✔️
+6. Generate a personal access github token in order to run `repo-report`. Follow the instructions [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token). Allow all scopes for proper access. Paste `GH_TOKEN=<the personal access token generated>` into the `.env` file. ✔️
+7. Run `npm start`. ✔️
+8. Your browswer should open to `localhost:3000`. ✔️
+9. Once there, you can search for your city from the dropdown menu. Input your start time and end time. Do the same for your podmate. The app will calculate what hours overlap and let you know what times during your working day, your podmate is available. ✔️
 
 <img width="1091" alt="Screen Shot 2022-02-03 at 10 42 55 AM" src="https://user-images.githubusercontent.com/26771302/152377328-f0a83927-dc96-44eb-a980-fcf40149d89b.png">
 
