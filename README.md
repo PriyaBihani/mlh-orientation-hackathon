@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Time Scheduling App is a React App, built with React, JavaScript, HTML and CSS. It is meant to help students in the MLH Fellowship find a better way of working across the world, and in different time zones than their fellow students. It helps students find what hours of their working day, overlap with their teammates in order to facilitate synchronous work.
+Time Scheduling App is a React App, built with React, JavaScript, HTML and CSS. It uses several npm packages and libraries: [repo-report](https://github.com/ljharb/repo-report), [city-timezones](https://www.npmjs.com/package/city-timezones), [react-select](https://react-select.com/home), [timezonezb API](https://timezonedb.com/api), [axios API](https://axios-http.com/docs/intro), [react-tiny-virtual-list](https://www.npmjs.com/package/react-tiny-virtual-list). It is meant to help students in the MLH Fellowship find a better way of working across the world, and in different time zones than their fellow students. It helps students find what hours of their working day, overlap with their teammates in order to facilitate synchronous work.
 
 ## Instructions
 
@@ -18,9 +18,9 @@ Time Scheduling App is a React App, built with React, JavaScript, HTML and CSS. 
 10. Your browswer should open to `localhost:3000`. ✔️
 11. Once there, you can search for your city from the dropdown menu. Input your start time and end time. Do the same for your podmate. The app will calculate what hours overlap and let you know what times during your working day, your podmate is available. ✔️
 
-<img width="820" alt="Screen Shot 2022-02-03 at 2 45 06 PM" src="https://user-images.githubusercontent.com/26771302/152417501-eccf25a0-dc9e-4fea-a3d7-3dd7227398b0.png">
+<img width="807" alt="Screen Shot 2022-02-04 at 9 08 18 AM" src="https://user-images.githubusercontent.com/26771302/152543425-c9bcbddd-b76f-4e58-ae72-25c54ea2eb16.png">
 
-<img width="813" alt="Screen Shot 2022-02-03 at 2 44 56 PM" src="https://user-images.githubusercontent.com/26771302/152417527-3e5a81a5-d755-4aa6-9573-7976583ecf04.png">
+<img width="830" alt="Screen Shot 2022-02-04 at 9 08 52 AM" src="https://user-images.githubusercontent.com/26771302/152543449-34b805a0-7243-4369-8710-3563cdb75d99.png">
 
 
 ## Contributors
