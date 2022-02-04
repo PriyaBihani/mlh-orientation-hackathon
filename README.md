@@ -10,7 +10,7 @@ Time Scheduling App is a React App, built with React, JavaScript, HTML and CSS. 
 2. CD into `mlh-orientation-hackathon`. ✔️
 3. CD into `time-app`. ✔️
 4. Run `npm install` to install all modules listed on the `package.json` file and their dependencies. ✔️
-5. Create a `.env` file. In the `.env` file, paste this code `REACT_APP_API_KEY=YOUR_API_KEY(<a href="https://timezonedb.com/api" >Generate here</a)`. ✔️
+5. Create a `.env` file. In the `.env` file, paste this code `REACT_APP_API_KEY=YOUR_API_KEY`.<a href="https://timezonedb.com/api" >Generate here</a> ✔️
 6. Generate a personal access github token in order to run `repo-report`. Follow the instructions [here](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-token). Allow the `repo` scope for proper access. Paste `GH_TOKEN=<the personal access token generated>` into the `.env` file. ✔️
 7. On the terminal run export `GH_TOKEN=<the personal access token generated>`. ✔️
 8. Run `npx repo-report` if you would like to see what repositories you have access to. ✔️
