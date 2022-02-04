@@ -22,6 +22,8 @@ Time Scheduling App is a React App, built with React, JavaScript, HTML and CSS. 
 
 <img width="830" alt="Screen Shot 2022-02-04 at 9 08 52 AM" src="https://user-images.githubusercontent.com/26771302/152543449-34b805a0-7243-4369-8710-3563cdb75d99.png">
 
+## Test Drive Time Scheduling App on Flamboyant
+[Project Deployment](https://flamboyant-borg-7d61af.netlify.app/)
 
 ## Contributors
 
