@@ -25,6 +25,10 @@ export default function App() {
   const [myColleaguesCity, setColleaguesCity] = useState("");
 
   const handleSubmit = async () => {
+    if (!myStartTime || !myEndTime || !colleaguesStartTime || !colleaguesEndTime || !myCity || !myColleaguesCity) {
+      window.alert("Please fill all the fields");
+    }
+
     let offset = await getTimezoneDifference(myColleaguesCity, myCity);
     let localColleagueStartTime = Number(colleaguesStartTime.split(":")[0]) + offset;
     let localColleagueEndTime = Number(colleaguesEndTime.split(":")[0]) + offset;
