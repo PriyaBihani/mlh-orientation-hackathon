@@ -10,6 +10,7 @@ import FormField from "./components/FormField";
 import SelectField from "./components/SelectField";
 import Button from "./components/Button";
 import Form from "./components/Form";
+import FormatOptionLabel from "./components/FormatOptionLabel";
 
 import { getTimezoneDifference, findRangeIntersection } from "./helpers";
 
@@ -58,9 +59,10 @@ export default function App() {
       <div className="splitter gap-top-600">
         <Form>
           <SelectField
-            onChange={(obj) => setMyCity(obj.value)}
+            onChange={(obj) => setMyCity(obj.timezone)}
             options={options}
             filterOption={createFilter({ ignoreAccents: false })}
+            formatOptionLabel={FormatOptionLabel}
             components={{ Option: CustomOption, MenuList: CustomMenuList }}
             title="My location"
           />
@@ -69,7 +71,7 @@ export default function App() {
         </Form>
         <Form>
           <SelectField
-            onChange={(obj) => setColleaguesCity(obj.value)}
+            onChange={(obj) => setColleaguesCity(obj.timezone)}
             options={options}
             filterOption={createFilter({ ignoreAccents: false })}
             components={{ Option: CustomOption, MenuList: CustomMenuList }}
