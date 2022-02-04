@@ -2,7 +2,7 @@
 
 ## Project Description
 
-Time Scheduling App is a React App, built with React, JavaScript, HTML and CSS. It uses several npm packages and libraries: repo-report, [city-timezones](https://www.npmjs.com/package/city-timezones), [react-select](https://react-select.com/home), [timezonezb API](https://timezonedb.com/api), [axios API](https://axios-http.com/docs/intro), [react-tiny-virtual-list](https://www.npmjs.com/package/react-tiny-virtual-list). It is meant to help students in the MLH Fellowship find a better way of working across the world, and in different time zones than their fellow students. It helps students find what hours of their working day, overlap with their teammates in order to facilitate synchronous work.
+Time Scheduling App is a React App, built with React, JavaScript, HTML and CSS. It uses several npm packages and libraries: [repo-report](https://github.com/ljharb/repo-report), [city-timezones](https://www.npmjs.com/package/city-timezones), [react-select](https://react-select.com/home), [timezonezb API](https://timezonedb.com/api), [axios API](https://axios-http.com/docs/intro), [react-tiny-virtual-list](https://www.npmjs.com/package/react-tiny-virtual-list). It is meant to help students in the MLH Fellowship find a better way of working across the world, and in different time zones than their fellow students. It helps students find what hours of their working day, overlap with their teammates in order to facilitate synchronous work.
 
 ## Instructions
 
