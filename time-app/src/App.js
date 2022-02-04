@@ -40,7 +40,8 @@ export default function App() {
       [localColleagueStartTime, localColleagueEndTime]
     );
 
-    resultString = `${result[0]}:00 - ${result[1]}:00 `;
+    // IF left limit is greater than right limit, then there is no intersection
+    resultString = result[0] > result[1] ? `No overlapping time found` : `${result[0]}:00 - ${result[1]}:00 `;
     setResult(resultString);
   };
 
