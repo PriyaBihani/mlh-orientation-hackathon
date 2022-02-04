@@ -1,5 +1,5 @@
 const AppWrapper = ({ children }) => (
-  <div className="color-primary font-base">
+  <div className="app color-primary font-base">
     <main>
       <article className="wrapper">{children}</article>
     </main>

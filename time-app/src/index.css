@@ -109,6 +109,12 @@ body {
   line-height: 1.5;
 }
 
+.app {
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+}
+
 h1,
 h2,
 h3 {
@@ -134,7 +140,7 @@ a {
 
 .radius,
 .button {
-  border-radius: 0.5rem;
+  border-radius: 4px;
 }
 
 .splitter > :last-child {
