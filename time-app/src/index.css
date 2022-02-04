@@ -156,7 +156,7 @@ a {
 }
 
 .wrapper {
-  max-width: 75rem;
+  max-width: 45rem;
   margin-left: auto;
   margin-right: auto;
   padding: 0 1.33rem;
@@ -211,19 +211,6 @@ a {
   flex-shrink: 0;
 }
 
-.key-header span {
-  overflow-wrap: break-word;
-  hyphens: auto;
-  font-size: 1.2rem;
-}
-@media screen and (min-width: 48em) {
-  .key-header span {
-    font-size: 2.375rem;
-    overflow-wrap: break-word;
-    hyphens: auto;
-  }
-}
-
 .site-head {
   padding: 0.4rem 0 0.8rem 0;
 }
@@ -243,11 +230,16 @@ a {
   FORM
 \*--------------------------------------------------------------------------*/
 .form {
-  max-width: 480px;
   width: 100%;
   padding: 24px;
 }
 
+@media screen and (min-width: 48em) {
+  .form {
+    min-width: 320px;
+    max-width: 320px;
+  }
+}
 .form__field {
   margin-bottom: 20px;
 }
@@ -309,25 +301,16 @@ a {
   color: hsl(0, 0%, 20%);
 }
 
-.custom-option {
-  transition: background 60ms;
-}
 .custom-option:hover {
-  transition-delay: 60ms;
-  background: #deebff;
+  background: white;
 }
 .custom-option.custom-select__option--is-focused {
-  background: none;
+  background: white;
 }
 .custom-option.custom-select__option--is-selected {
-  background: #2684ff;
+  background: white;
 }
 
-.react-virtualized-menu-placeholder {
-  margin-top: 12px;
-  color: #9a9a9a;
-  text-align: center;
-}
 .react-virtualized-list-wrapper li {
   list-style: none;
 }
