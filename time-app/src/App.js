@@ -26,7 +26,8 @@ export default function App() {
   const [myColleaguesCity, setColleaguesCity] = useState("");
 
   const handleSubmit = async () => {
-    if (!myStartTime && !myEndTime && !colleaguesStartTime && !colleaguesEndTime && !myCity && !myColleaguesCity) {
+    if (!myStartTime || !myEndTime || !colleaguesStartTime || !colleaguesEndTime || !myCity || !myColleaguesCity) {
+      window.alert("Please fill all the fields");
       return;
     }
 
