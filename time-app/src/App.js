@@ -26,8 +26,8 @@ export default function App() {
   const [myColleaguesCity, setColleaguesCity] = useState("");
 
   const handleSubmit = async () => {
-    if (!myStartTime || !myEndTime || !colleaguesStartTime || !colleaguesEndTime || !myCity || !myColleaguesCity) {
-      window.alert("Please fill all the fields");
+    if (!myStartTime && !myEndTime && !colleaguesStartTime && !colleaguesEndTime && !myCity && !myColleaguesCity) {
+      return;
     }
 
     let offset = await getTimezoneDifference(myColleaguesCity, myCity);
@@ -49,9 +49,7 @@ export default function App() {
   return (
     <AppWrapper>
       {result ? (
-        <Header title="Your shared working hours:">
-          <span>{result}</span>
-        </Header>
+        <Header title={`Your shared working hours: ${result}`} />
       ) : (
         <Header title="Find your shared working hours" />
       )}
